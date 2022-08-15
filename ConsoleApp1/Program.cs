@@ -3,12 +3,12 @@ using GdPicture14;
 using System.Globalization;
 using System.Drawing;
 
-    string Nome="Michel A Costa";
-    string Email = "michel.c@lyncas.net";
-    string EstadoPais="Mato Grosso - Brasil";
+    string Nome="";
+    string Email = "";
+    string EstadoPais="";
     
-    string Observacao= "Documentos cartoriais";
-    string Assinatura = @"C:\Users\michel\source\repos\ConsoleApp1\ConsoleApp1\asssinatura.jpg";
+    string Observacao= "";
+    string Assinatura = @"";
     
     Console.WriteLine("Sistema para assinatura Digital para documentos digitais.");
     LicenseManager  LicenseManager = new LicenseManager();
@@ -18,7 +18,7 @@ using System.Drawing;
     GdPicturePDF oGdPicturePDF = new GdPicturePDF();
 
     //Carregamento do documento PDF que deseja assinar.
-    GdPictureStatus status = oGdPicturePDF.LoadFromFile(@"C:\Users\michel\source\repos\ConsoleApp1\ConsoleApp1\migracao-elastic.pdf", true);
+    GdPictureStatus status = oGdPicturePDF.LoadFromFile(@"", true);
     if (status != GdPictureStatus.OK)
     {
         Console.WriteLine("O arquivo não pode ser carregado."+ caption);
@@ -27,7 +27,7 @@ using System.Drawing;
     //A ordem correta das etapas obrigatórias é importante.
     //Os passos obrigatórios são o passo #1 e o passo #2 e o último passo #5.
     //Passo 1: Configurando o certificado, seu arquivo de ID digital.
-    status = oGdPicturePDF.SetSignatureCertificateFromP12(@"C:\Users\michel\source\repos\ConsoleApp1\ConsoleApp1\Pierre de Fermat.pfx", "1234");
+    status = oGdPicturePDF.SetSignatureCertificateFromP12(@"", "");
     if (status != GdPictureStatus.OK)
     {
         Console.WriteLine("O método SetSignatureCertificateFromP12() falhou com o status: " + status.ToString(), caption);
@@ -104,7 +104,7 @@ using System.Drawing;
     
     }
     //Passo 5: O último passo - assinar. Esta etapa deve ser a última. Todas as outras etapas opcionais podem ser feitas em qualquer ordem.
-    status = oGdPicturePDF.ApplySignature(@"C:\Users\michel\source\repos\ConsoleApp1\ConsoleApp1\assinado.pdf", PdfSignatureMode.PdfSignatureModeAdobeCADES, true);
+    status = oGdPicturePDF.ApplySignature(@"", PdfSignatureMode.PdfSignatureModeAdobeCADES, true);
     if (status == GdPictureStatus.OK)
         Console.WriteLine("O documento foi assinado com sucesso e o arquivo foi salvo.");
     else
